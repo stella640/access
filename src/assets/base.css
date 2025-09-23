@@ -1,0 +1,39 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default button/input styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* Make buttons clearly clickable */
+button {
+  cursor: pointer;
+}
+
+/* Base body styles */
+body {
+  min-height: 100vh;
+  background-image: url('@/assets/background-image.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'BellSlimBlack', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+
